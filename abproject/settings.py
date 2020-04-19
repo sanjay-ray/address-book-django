@@ -79,13 +79,13 @@ WSGI_APPLICATION = "abproject.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    }
-}
+DATABASES = {"default": {"ENGINE": "django.db.backends.postgresql_psycopg2",}}
+# "ENGINE": "django.db.backends.sqlite3",
+# "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
 
+DATABASES["default"] = dj_database_url.config(
+    default="postgres://zbaqxcmulcvpnm:8963e622e97e4fe1189552eb443bca3c740148ce5a89954029d6a0651aee71c7@ec2-34-233-186-251.compute-1.amazonaws.com:5432/d8p4pmees0cph4"
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
