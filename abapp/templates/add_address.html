@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Add address</h1>
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <input type="text" class="form-control" id="name" placeholder="Full Name" name="name">
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="email" placeholder="Email Address" name="email">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="address" placeholder="Street Address" name="address">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="phone" placeholder="Phone Number" name="phone">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="city" placeholder="City" name="city">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="state" placeholder="State/Province" name="state">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="postcode" placeholder="Postal/Zip Code" name="postcode">
+    </div>
+    <button type="submit" class="btn btn-secondary">Submit</button>
+</form>
+{% endblock %}

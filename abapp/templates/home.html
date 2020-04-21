@@ -1,4 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Address Book Home Page</h1>
+
+<div class="row">
+    {% if all_addresses %}
+    {% for this_record in all_addresses %}
+    <div class="col-sm">
+        <div class="card mt-2" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ this_record.name }}</h5>
+                <p>{{ this_record.email }}</p>
+                <p>{{ this_record.phone }}</p>
+                <p>{{ this_record.address }}</p>
+                <p>{{ this_record.city }}</p>
+                <p>{{ this_record.postcode }}</p>
+                <div class="row">
+                    <a href="{% url 'edit_address' this_record.id %}" class="btn btn-secondary">Edit</a>
+                    <form method="POST" action="{% url 'delete_address' this_record.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{ this_record.id }}" name="id">
+                        <button type="submit" class="btn btn-secondary ml-3">Delete</button>
+                    </form>
+                </div>
+                <!-- <a href="{% url 'delete_address' this_record.id %}" class="btn btn-secondary ml-3">Delete</a> -->
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
 {% endblock %}

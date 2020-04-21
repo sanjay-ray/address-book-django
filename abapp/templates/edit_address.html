@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if this_address %}
+<h1>Edit the Address</h1>
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <input type="text" class="form-control" id="name" value="{{ this_address.name}}" , name="name">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="email" value="{{ this_address.email}}" , name="email">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="address" value="{{ this_address.address}}" , name="address">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="phone" value="{{ this_address.phone}}" , name="phone">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="city" value="{{ this_address.city}}" , name="city">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="state" value="{{ this_address.state}}" , name="state">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="postcode" value="{{ this_address.postcode}}" , name="postcode">
+    </div>
+    <button type="submit" class="btn btn-secondary">Edit Address</button>
+</form>
+<br>
+<form method="POST" action="{% url 'delete_address' this_address.id %}">
+    {% csrf_token %}
+    <input type="hidden" value="{{ this_address.id }}" name="id">
+    <button type="submit" class="btn btn-secondary">Delete Address</button>
+</form>
+{% endif %}
+{% endblock %}
